@@ -1,0 +1,36 @@
+## About This Project
+
+This project is based on the [Front End Mentor Job Listings and Filtering challenge](https://www.frontendmentor.io/challenges/job-listings-with-filtering-ivstIPCt)
+
+## Project Setup
+
+This project will be built using the following:
+- React
+- [SHopify's Checkout UI Component Library](https://shopify.dev/api/checkout-extensions/checkout/components)
+- TypeScript
+- Storybook
+- Tailwind
+
+
+### Additional Configurations
+
+After installing **sass** as per the [official React docs](<https://create-react-app.dev/docs/adding-a-sass-stylesheet>) I decided to also add CSS Reset which was the next step in the docs. They did mention that you might encounter the following eslint warning:
+
+<img src="https://i.imgur.com/BfyqtPC.png" />
+
+And provided the following suggestion:
+<img src="https://i.imgur.com/06QFuey.png" />
+
+So a quick google search led me to [turn off "Unkown at" elsint rule](https://flaviocopes.com/fix-unknown-at-rule-tailwind/) which resolved the warning.
+
+<img src="https://i.imgur.com/3kvCgHT.png" />
+
+
+### Resources
+
+- [SVG Previewer](https://marketplace.visualstudio.com/items?itemName=vitaliymaz.vscode-svg-previewer)
+- [How to Configure a React App with TypeScript, TailwindCSS, Yarn and Storybook](https://blog.bitsrc.io/how-to-configure-a-react-app-with-typescript-tailwindcss-yarn-and-storybook-a271df5d9884)
+- [How to use Prettier with ESLint and TypeScript in VSCode](https://khalilstemmler.com/blogs/tooling/prettier/)
+- [Adding CSS Reset to CRA](https://create-react-app.dev/docs/adding-css-reset)
+- [Adding TypeScript to CRA](https://create-react-app.dev/docs/adding-typescript/)
+- [How To Structure React Projects From Beginner To Advanced](https://blog.webdevsimplified.com/2022-07/react-folder-structure/)
