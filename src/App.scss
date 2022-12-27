@@ -1,14 +1,22 @@
-@import-normalize;
+@import-normalize;// 
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --blue: #1e90ff;
   --white: #ffffff;
-  --desaturated-dark-cyan: hsl(180, 29%, 50%);
-  --light-grayish-cyan-background: hsl(180, 52%, 96%);
+  --desaturated-dark-cyan: #5ba4a4;
+  --light-grayish-cyan-background: #effafa;
   --light-grayish-cyan-filter-tablets: hsl(180, 31%, 95%);
   --dark-grayish-cyan: hsl(180, 8%, 52%);
   --very-dark-grayish-cyan: hsl(180, 14%, 20%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -18,13 +26,12 @@ body {
 .App {
   background: var(--light-grayish-cyan-background);
   font-family: League Spartan;
-  font-size: 15px;
-  font-weight: 700;
-  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 500;
+  // margin: 0 auto;
   min-height: 100vh;
   text-align: center;
   width: 375px;
-
 }
 
 .header {
@@ -35,4 +42,76 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
+}
+
+.main-content {
+  // border: 1px solid;
+  width: 327px;
+  margin: -21px auto;
+  z-index: 1;
+  position: relative;
+}
+
+.search-filter {
+  // border: 1px solid;
+  background: var(--white);
+  // line-height: 1;
+  min-height: 36px;
+  // height:0;
+  padding: 15px;
+  width: 327px;
+  // visibility: hidden;
+}
+
+.search-filter .filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.search-filter .filter-item {
+  border-radius: 10%;
+  display: flex;
+}
+
+.search-filter .filter {
+  background: var(--light-grayish-cyan-background);
+  color: var(--desaturated-dark-cyan);
+  padding: 5px 10px;
+  border-top-left-radius: 10%;
+  border-bottom-left-radius: 10%;
+  display: flex;
+  align-items: center;
+  line-height: normal;
+}
+
+.search-filter .filter-item .close {
+  color: var(--white);
+  background: var(--desaturated-dark-cyan);
+  padding: 7px 5px;
+
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 10%;
+}
+
+.search-filter .clear {
+  color: var(--dark-grayish-cyan);
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: var(--desaturated-dark-cyan);
+    cursor: pointer;
+  }
+}
+
+.job-listing {
+  background: var(--white);
+  border: 1px solid;
+  // min-height: 281px;
+  margin-bottom: 20px;
+}
+
+.job-listing:first-of-type {
+  margin-top: 30px;
 }

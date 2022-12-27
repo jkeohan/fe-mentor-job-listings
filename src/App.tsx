@@ -1,13 +1,93 @@
 import React from 'react';
 import './App.scss';
+import mobileHeaderSvg from './assets/images/bg-header-mobile.svg';
+import removeButton from './assets/images/remove-icon.svg';
+import insure from './assets/images/insure.svg';
 
 function App() {
   return (
     <div className="App">
       <header className="header">
-        <svg xmlns="http://www.w3.org/2000/svg" width="375" height="156"><g fill="#5CA5A5"><path fill="#63BABA" fill-rule="evenodd" d="M-86.732 487.429c-51.432-51.425-51.438-134.806-.013-186.237l.013-.013L309.926-95.424c51.441-51.434 134.836-51.434 186.277 0C547.634-44 547.64 39.38 496.216 90.813c-.005.004-.01.008-.013.013L99.543 487.429c-51.44 51.433-134.834 51.433-186.275 0zm-444.692 71.824c-51.432-51.424-51.438-134.806-.013-186.237l.013-.013L-134.766-23.6C-83.325-75.034.07-75.034 51.511-23.6c51.431 51.424 51.437 134.805.013 186.237l-.013.013-396.66 396.603c-51.44 51.433-134.834 51.433-186.275 0z"/></g></svg>
+        <img src={mobileHeaderSvg} alt="mobile-header" />
       </header>
-    <section className="job-listings"></section>
+      <section className="main-content">
+        <div className="search-filter flex">
+          <div className="filters grow">
+            <div className="filter-item">
+              <div className="filter">Frontend</div>
+              <span className="close">
+                <img
+                  className="w-6 h-6"
+                  src={removeButton}
+                  alt="mobile-header"
+                />
+              </span>
+            </div>
+            <div className="filter-item">
+              <span className="filter">CSS</span>
+              <span className="close">
+                <img
+                  className="w-6 h-6"
+                  src={removeButton}
+                  alt="mobile-header"
+                />
+              </span>
+            </div>
+            <div className="filter-item">
+              <span className="filter">JavaScript</span>
+              <span className="close">
+                <img
+                  className="w-6 h-6"
+                  src={removeButton}
+                  alt="mobile-header"
+                />
+              </span>
+            </div>
+          </div>
+          <div className="clear flex">Clear</div>
+        </div>
+        <section className="job-listings">
+          <article className="job-listing p-4 pt-0 text-left">
+            <img className="-mt-[25px] w-11" src={insure} alt="company-logo" />
+            <div>
+              <div className="flex items-center gap-[10px] my-2">
+                <div className="text-xs">Photosnap</div>
+                <div className="text-sm p-2 leading-none bg-desaturated-dark-cyan text-white rounded-full">
+                  NEW!
+                </div>
+                <div className="text-sm p-1 bg-black text-white rounded-full">
+                  FEATURED
+                </div>
+              </div>
+              <div className="text-sm">Senior Frontend Developer</div>
+              <div className="flex gap-[10px] my-2">
+                <div>1 day ago</div>
+                <span>&middot;</span>
+                <div>Full Time</div>
+                <span>&middot;</span>
+                <div>USA Only</div>
+              </div>
+            </div>
+            <hr className="my-2" />
+            <div className="flex items-center gap-[10px] my-2">
+              <span className="bg-light-grayish-cyan-background leading-none">
+                HTML
+              </span>
+              <div>JavaScript</div>
+              <div>HTML</div>
+              <div className="search-filter flex">
+                <div className="filters grow">
+                  <div className="filter-item">
+                    <span className="filter">JavaScript</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article className="job-listing">job listing</article>
+          <article className="job-listing">job listing</article>
+        </section>
+      </section>
     </div>
   );
 }
