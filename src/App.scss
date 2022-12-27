@@ -16,16 +16,19 @@ body {
 }
 
 .App {
-
+  background: var(--light-grayish-cyan-background);
   font-family: League Spartan;
   font-size: 15px;
   font-weight: 700;
-   text-align: center;
+  margin: 0 auto;
+  min-height: 100vh;
+  text-align: center;
+  width: 375px;
+
 }
 
-.App-header {
-  background: var(--light-grayish-cyan-background);
-  min-height: 100vh;
+.header {
+  height: 157px;
   display: flex;
   flex-direction: column;
   align-items: center;
