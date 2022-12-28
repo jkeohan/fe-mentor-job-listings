@@ -21,14 +21,15 @@ type JobListingObj = {
 
 interface Props {
   jobsData: JobListingObj[];
+  addFilter: (term: string) => void;
 }
 
-export function JobListing({ jobsData }: Props) {
+export function JobListing({ jobsData, addFilter }: Props) {
   const jobListingsMarkup = jobsData.map((job, index) => {
     const tags = [job.role, job.level, ...job.languages, ...job.tools];
 
     return (
-        <article className="job-listing p-4 pt-0 text-left" key={index}>
+        <article className="job-listing p-4 pt-0 text-left" key={job.id}>
           {/* <ReactSVG src={svgPath} /> */}
           <img src={logos.photosnap} alt="logo" className="w-12 " />
           <div>
@@ -50,7 +51,7 @@ export function JobListing({ jobsData }: Props) {
             <div className="text-sm">{job.position}</div>
             <div className="flex items-center gap-[10px] my-2 text-dark-grayish-cyan">
               <div>{job.postedAt}</div>
-              <span text-lg>&middot; </span>
+              <span>&middot; </span>
               <div>{job.contract}</div>
               <span>&middot;</span>
               <div>{job.location}</div>
@@ -59,7 +60,7 @@ export function JobListing({ jobsData }: Props) {
 
           <hr className="my-2" />
 
-          <Tags tags={tags} />
+          <Tags tags={tags} addFilter={addFilter}/>
         </article>
     );
   });
