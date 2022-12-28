@@ -1,11 +1,13 @@
 import React from 'react';
 import removeButton from '../../assets/images/remove-icon.svg'
+import './styles.css'
 
 interface Props {
     filters: string[]
+    clearFilter: () => void
 }
 
-export function SearchFilter({filters}: Props) {
+export function SearchFilter({filters, clearFilter}: Props) {
 
     const activeFilters = filters.map((filter, index) => (
       <div className="filter-item flex" key={filter}>
@@ -23,7 +25,7 @@ export function SearchFilter({filters}: Props) {
         <div className="flex-wrap flex gap-[15px] grow">
          {activeFilters}
         </div>
-        <div className="clear flex">Clear</div>
+        <div onClick={clearFilter} className="clear flex">Clear</div>
       </div>
     );
 }

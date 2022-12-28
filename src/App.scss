@@ -46,37 +46,19 @@
   // border: 1px solid;
   width: 327px;
   margin: -21px auto;
+
   z-index: 1;
   position: relative;
 }
 
-
-.search-filter .filter-item .close {
-  color: var(--white);
-  background: var(--desaturated-dark-cyan);
-  padding: 7px 5px;
-
-  border-top-right-radius: 10%;
-  border-bottom-right-radius: 10%;
-}
-
-.search-filter .clear {
-  color: var(--dark-grayish-cyan);
-  display: flex;
-  align-items: center;
-
-  &:hover {
-    color: var(--desaturated-dark-cyan);
-    cursor: pointer;
-  }
-}
-
 .job-listing {
   background: var(--white);
-  border: 1px solid;
-  margin-bottom: 20px;
 }
 
 .job-listing:first-of-type {
   margin-top: 30px;
+}
+
+.job-listing img {
+  margin-top: -25px;
 }

@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import './App.scss';
 import mobileHeaderSvg from './assets/images/bg-header-mobile.svg';
 import * as logos from './assets/images';
 import { SearchFilter } from './components/SearchFilter';
-import { Tags } from './components/Tags';
+import { JobListing } from './components/JobListing';
+import { Tags } from './components/JobListing/components/Tags';
+// import { ReactSVG } from 'react-svg';
 import jobListings from './data/data.json';
 
 console.log(logos);
@@ -15,57 +17,24 @@ function App() {
     'JavaScript'
   ]);
 
-  const jobTags = ['Frontend', 'Senior', 'HTML', 'CSS', 'JavaScript'];
+  const handleClearFilter = () => setSearchFilters([])
 
   return (
     <div className="App">
       <header className="header">
         <img src={mobileHeaderSvg} alt="mobile-header" />
       </header>
-      <section className="main-content">
-        <SearchFilter filters={searchFilters} />
-        <section className="job-listings flex flex-col gap-[15px]">
-          {jobListings.map((job, index) => {
-            const tags = [job.role, job.level, ...job.languages, ...job.tools];
-  
-
-            return (
-              <article className="job-listing p-4 pt-0 text-left" key={index}>
-                <img
-                  className="-mt-[25px] w-11"
-                  src={logos.photosnap}
-                  alt="company-logo"
-                />
-                <div>
-                  <div className="flex items-center gap-[10px] my-2">
-                    <div className="text-xs pr-5 text-desaturated-dark-cyan font-bold">{job.company}</div>
-                    {job.new && (
-                      <div className="text-sm p-2 leading-none bg-desaturated-dark-cyan text-white rounded-full">
-                        NEW!
-                      </div>
-                    )}
-                    {job.featured && (
-                      <div className="text-sm p-2 leading-tight bg-black text-white rounded-full">
-                        FEATURED
-                      </div>
-                    )}
-                  </div>
-                  <div className="text-sm">{job.position}</div>
-                  <div className="flex items-center gap-[10px] my-2 text-dark-grayish-cyan">
-                    <div>{job.postedAt}</div>
-                    <span text-lg>&middot; </span>
-                    <div>{job.contract}</div>
-                    <span>&middot;</span>
-                    <div>{job.location}</div>
-                  </div>
-                </div>
-
-                <hr className="my-2" />
-
-                <Tags tags={tags} />
-              </article>
-            );
-          })}
+      {searchFilters.length > 0 && (
+        <div className="-mt-10 search-filter">
+          <SearchFilter
+            filters={searchFilters}
+            clearFilter={handleClearFilter}
+          />
+        </div>
+      )}
+      <section className="main-content pt-12">
+        <section className="job-listings flex flex-col gap-[40px]">
+          <JobListing jobsData={jobListings} />
         </section>
       </section>
     </div>
@@ -209,3 +178,50 @@ export default App;
 //   "languages": ["JavaScript"],
 //   "tools": ["React", "Sass"]
 // }
+
+
+          
+            /* {jobListings.map((job, index) => {
+            const tags = [job.role, job.level, ...job.languages, ...job.tools];
+            const svgPath = `./assets/images/${job.logo}`;
+
+            return (
+              <article className="job-listing p-4 pt-0 text-left" key={index}>
+                <img
+                  src={logos.photosnap}
+                  alt="logo"
+                  className="-mt-[25px] w-12 "
+                />
+                <div>
+                  <div className="flex items-center gap-[10px] my-2">
+                    <div className="text-xs pr-5 text-desaturated-dark-cyan font-bold">
+                      {job.company}
+                    </div>
+                    {job.new && (
+                      <div className="text-sm p-2 leading-none bg-desaturated-dark-cyan text-white rounded-full">
+                        NEW!
+                      </div>
+                    )}
+                    {job.featured && (
+                      <div className="text-sm p-2 leading-tight bg-black text-white rounded-full">
+                        FEATURED
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-sm">{job.position}</div>
+                  <div className="flex items-center gap-[10px] my-2 text-dark-grayish-cyan">
+                    <div>{job.postedAt}</div>
+                    <span text-lg>&middot; </span>
+                    <div>{job.contract}</div>
+                    <span>&middot;</span>
+                    <div>{job.location}</div>
+                  </div>
+                </div>
+
+                <hr className="my-2" />
+
+                <Tags tags={tags} />
+              </article>
+            );
+          })} */
+          

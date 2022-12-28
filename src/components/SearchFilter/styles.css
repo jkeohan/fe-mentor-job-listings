@@ -1,0 +1,28 @@
+.search-filter {
+    width: 327px;
+    z-index: 1;
+    margin-right: auto;
+    margin-left: auto;
+   position: relative;
+}
+
+
+.search-filter .filter-item .close {
+  color: var(--white);
+  background: var(--desaturated-dark-cyan);
+  padding: 7px 5px;
+
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 10%;
+}
+
+.search-filter .clear {
+  color: var(--dark-grayish-cyan);
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: var(--desaturated-dark-cyan);
+    cursor: pointer;
+  }
+}
