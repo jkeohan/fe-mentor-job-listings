@@ -1,6 +1,6 @@
-@import-normalize;// 
+@import-normalize;
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap');
-@tailwind base;
+@tailwind base; 
 @tailwind components;
 @tailwind utilities;
 
@@ -13,21 +13,30 @@
   --very-dark-grayish-cyan: hsl(180, 14%, 20%);
 }
 
+@layer components {
+  .flex-center {
+    @apply flex items-center;
+  }
+  .tag-color {
+    @apply bg-light-grayish-cyan-background text-desaturated-dark-cyan;
+  }
+}
+
 .App {
   background: var(--light-grayish-cyan-background);
   font-family: League Spartan;
   font-weight: 500;
   min-height: 100vh;
   text-align: center;
-  width: 375px;
+  // width: 375px;
 }
 
-.header {
-  height: 157px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: black;
-}
+// .header {
+//   height: 160px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: calc(10px + 2vmin);
+//   color: black;
+// }
