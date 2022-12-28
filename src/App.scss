@@ -9,26 +9,24 @@
   --desaturated-dark-cyan: #5ba4a4;
   --light-grayish-cyan-background: #effafa;
   --light-grayish-cyan-filter-tablets: hsl(180, 31%, 95%);
-  --dark-grayish-cyan: hsl(180, 8%, 52%);
+  --dark-grayish-cyan: #7b8e8e;
   --very-dark-grayish-cyan: hsl(180, 14%, 20%);
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+// * {
+//   box-sizing: border-box;
+//   margin: 0;
+//   padding: 0;
+// }
 
-body {
-  margin: 0;
-}
+// body {
+//   margin: 0;
+// }
 
 .App {
   background: var(--light-grayish-cyan-background);
   font-family: League Spartan;
-  font-size: 16px;
   font-weight: 500;
-  // margin: 0 auto;
   min-height: 100vh;
   text-align: center;
   width: 375px;
@@ -52,38 +50,6 @@ body {
   position: relative;
 }
 
-.search-filter {
-  // border: 1px solid;
-  background: var(--white);
-  // line-height: 1;
-  min-height: 36px;
-  // height:0;
-  padding: 15px;
-  width: 327px;
-  // visibility: hidden;
-}
-
-.search-filter .filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.search-filter .filter-item {
-  border-radius: 10%;
-  display: flex;
-}
-
-.search-filter .filter {
-  background: var(--light-grayish-cyan-background);
-  color: var(--desaturated-dark-cyan);
-  padding: 5px 10px;
-  border-top-left-radius: 10%;
-  border-bottom-left-radius: 10%;
-  display: flex;
-  align-items: center;
-  line-height: normal;
-}
 
 .search-filter .filter-item .close {
   color: var(--white);
@@ -108,7 +74,6 @@ body {
 .job-listing {
   background: var(--white);
   border: 1px solid;
-  // min-height: 281px;
   margin-bottom: 20px;
 }
 
