@@ -40,8 +40,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/jkeohan/fe-mentor-job-listings](https://github.com/jkeohan/fe-mentor-job-listings)
+- Live Site URL: [https://fe-mentor-job-listings.netlify.app/](https://fe-mentor-job-listings.netlify.app/)
 
 ## My process
 

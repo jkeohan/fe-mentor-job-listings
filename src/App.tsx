@@ -1,91 +1,91 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import mobileHeaderSvg from './assets/images/bg-header-mobile.svg';
-import removeButton from './assets/images/remove-icon.svg';
-import insure from './assets/images/insure.svg';
+import { SearchFilter } from './components/SearchFilter';
+import { JobListing } from './components/JobListing';
+import jobData from './data/data.json';
+import { JobListingObj } from './types/JobListingObj';
 
 function App() {
+  const [searchFilters, setSearchFilters] = useState<string[]>([]);
+  const [filteredJobListings, setFilteredJobListings] = useState<
+    JobListingObj[]
+  >([]);
+
+  const handleClearFilter = () => {
+    setSearchFilters([]);
+    setFilteredJobListings([]);
+  };
+
+  const handleRemoveFilter = (term: string) => {
+    const searchFilterArr = searchFilters.filter((filter) => filter !== term);
+    console.log({ searchFilterArr });
+    setSearchFilters(searchFilterArr);
+    // eslint-disable-next-line array-callback-return
+    const removeJobListings = filteredJobListings.filter((job) => {
+      if (
+        searchFilterArr.includes(job.role) ||
+        searchFilterArr.includes(job.level)
+      ) {
+        return job;
+      }
+
+      for (var lang of job.languages) {
+        if (searchFilterArr.includes(lang)) return job;
+      }
+
+      for (var tool of job.tools) {
+        if (searchFilterArr.includes(tool)) return job;
+      }
+    });
+    setFilteredJobListings(removeJobListings);
+  };
+
+  const handleAddFilter = (term: string) => {
+    if (!searchFilters.includes(term)) {
+      const searchFilterArr = [...searchFilters, term];
+      setSearchFilters(searchFilterArr);
+
+      const jobListingData = jobData.filter((job) => {
+        return (
+          job.role === term ||
+          job.level === term ||
+          job.languages.includes(term) ||
+          job.tools.includes(term)
+        );
+      });
+      const allJobListings = new Set([
+        ...jobListingData,
+        ...filteredJobListings
+      ]);
+      setFilteredJobListings(Array.from(allJobListings));
+    }
+  };
+
   return (
     <div className="App">
       <header className="header">
         <img src={mobileHeaderSvg} alt="mobile-header" />
       </header>
-      <section className="main-content">
-        <div className="search-filter flex">
-          <div className="filters grow">
-            <div className="filter-item">
-              <div className="filter">Frontend</div>
-              <span className="close">
-                <img
-                  className="w-6 h-6"
-                  src={removeButton}
-                  alt="mobile-header"
-                />
-              </span>
-            </div>
-            <div className="filter-item">
-              <span className="filter">CSS</span>
-              <span className="close">
-                <img
-                  className="w-6 h-6"
-                  src={removeButton}
-                  alt="mobile-header"
-                />
-              </span>
-            </div>
-            <div className="filter-item">
-              <span className="filter">JavaScript</span>
-              <span className="close">
-                <img
-                  className="w-6 h-6"
-                  src={removeButton}
-                  alt="mobile-header"
-                />
-              </span>
-            </div>
-          </div>
-          <div className="clear flex">Clear</div>
+      {searchFilters.length > 0 && (
+        <div className="-mt-10 search-filter">
+          <SearchFilter
+            filters={searchFilters}
+            clearFilter={handleClearFilter}
+            removeFilter={handleRemoveFilter}
+          />
         </div>
-        <section className="job-listings">
-          <article className="job-listing p-4 pt-0 text-left">
-            <img className="-mt-[25px] w-11" src={insure} alt="company-logo" />
-            <div>
-              <div className="flex items-center gap-[10px] my-2">
-                <div className="text-xs">Photosnap</div>
-                <div className="text-sm p-2 leading-none bg-desaturated-dark-cyan text-white rounded-full">
-                  NEW!
-                </div>
-                <div className="text-sm p-1 bg-black text-white rounded-full">
-                  FEATURED
-                </div>
-              </div>
-              <div className="text-sm">Senior Frontend Developer</div>
-              <div className="flex gap-[10px] my-2">
-                <div>1 day ago</div>
-                <span>&middot;</span>
-                <div>Full Time</div>
-                <span>&middot;</span>
-                <div>USA Only</div>
-              </div>
-            </div>
-            <hr className="my-2" />
-            <div className="flex items-center gap-[10px] my-2">
-              <span className="bg-light-grayish-cyan-background leading-none">
-                HTML
-              </span>
-              <div>JavaScript</div>
-              <div>HTML</div>
-              <div className="search-filter flex">
-                <div className="filters grow">
-                  <div className="filter-item">
-                    <span className="filter">JavaScript</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article className="job-listing">job listing</article>
-          <article className="job-listing">job listing</article>
+      )}
+      <section className="main-content pt-12">
+        <section className="job-listings flex flex-col gap-[40px]">
+          {filteredJobListings.length > 0 ? (
+            <JobListing
+              jobsData={filteredJobListings}
+              addFilter={handleAddFilter}
+            />
+          ) : (
+            <JobListing jobsData={jobData} addFilter={handleAddFilter} />
+          )}
         </section>
       </section>
     </div>

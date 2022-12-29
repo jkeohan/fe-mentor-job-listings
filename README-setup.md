@@ -37,3 +37,4 @@ So a quick google search led me to [turn off "Unkown at" elsint rule](https://fl
 - [Adding CSS Reset to CRA](https://create-react-app.dev/docs/adding-css-reset)
 - [Adding TypeScript to CRA](https://create-react-app.dev/docs/adding-typescript/)
 - [How To Structure React Projects From Beginner To Advanced](https://blog.webdevsimplified.com/2022-07/react-folder-structure/)
+- [Hero Icons](https://heroicons.dev/?query=x)
