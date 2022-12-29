@@ -8,13 +8,11 @@ import { JobListingObj } from './types/JobListingObj';
 
 function App() {
   const [searchFilters, setSearchFilters] = useState<string[]>([]);
-  const [filteredJobListings, setFilteredJobListings] = useState<
-    JobListingObj[]
-  >([]);
+  const [filterListings, setFilterListings] = useState<JobListingObj[]>([]);
 
   const handleClearFilter = () => {
     setSearchFilters([]);
-    setFilteredJobListings([]);
+    setFilterListings([]);
   };
 
   const handleRemoveFilter = (term: string) => {
@@ -22,7 +20,7 @@ function App() {
     console.log({ searchFilterArr });
     setSearchFilters(searchFilterArr);
     // eslint-disable-next-line array-callback-return
-    const removeJobListings = filteredJobListings.filter((job) => {
+    const removeJobListings = filterListings.filter((job) => {
       if (
         searchFilterArr.includes(job.role) ||
         searchFilterArr.includes(job.level)
@@ -38,7 +36,7 @@ function App() {
         if (searchFilterArr.includes(tool)) return job;
       }
     });
-    setFilteredJobListings(removeJobListings);
+    setFilterListings(removeJobListings);
   };
 
   const handleAddFilter = (term: string) => {
@@ -54,11 +52,8 @@ function App() {
           job.tools.includes(term)
         );
       });
-      const allJobListings = new Set([
-        ...jobListingData,
-        ...filteredJobListings
-      ]);
-      setFilteredJobListings(Array.from(allJobListings));
+      const allJobListings = new Set([...jobListingData, ...filterListings]);
+      setFilterListings(Array.from(allJobListings));
     }
   };
 
@@ -76,13 +71,10 @@ function App() {
           />
         </div>
       )}
-      <section className="main-content pt-12">
+      <section className="main-content pt-6 w-[327px] m-auto">
         <section className="job-listings flex flex-col gap-[40px]">
-          {filteredJobListings.length > 0 ? (
-            <JobListing
-              jobsData={filteredJobListings}
-              addFilter={handleAddFilter}
-            />
+          {filterListings.length > 0 ? (
+            <JobListing jobsData={filterListings} addFilter={handleAddFilter} />
           ) : (
             <JobListing jobsData={jobData} addFilter={handleAddFilter} />
           )}

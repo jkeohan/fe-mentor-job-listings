@@ -13,16 +13,6 @@
   --very-dark-grayish-cyan: hsl(180, 14%, 20%);
 }
 
-// * {
-//   box-sizing: border-box;
-//   margin: 0;
-//   padding: 0;
-// }
-
-// body {
-//   margin: 0;
-// }
-
 .App {
   background: var(--light-grayish-cyan-background);
   font-family: League Spartan;
@@ -40,25 +30,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
-}
-
-.main-content {
-  // border: 1px solid;
-  width: 327px;
-  margin: -21px auto;
-
-  z-index: 1;
-  position: relative;
-}
-
-.job-listing {
-  background: var(--white);
-}
-
-.job-listing:first-of-type {
-  margin-top: 30px;
-}
-
-.job-listing img {
-  margin-top: -25px;
 }
