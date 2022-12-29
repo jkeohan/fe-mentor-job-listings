@@ -3,27 +3,60 @@ import './App.scss';
 import mobileHeaderSvg from './assets/images/bg-header-mobile.svg';
 import { SearchFilter } from './components/SearchFilter';
 import { JobListing } from './components/JobListing';
-// import { ReactSVG } from 'react-svg';
-import jobListings from './data/data.json';
+import jobData from './data/data.json';
+import { JobListingObj } from './types/JobListingObj';
 
 function App() {
-  const [searchFilters, setSearchFilters] = useState([
-    'Frontend',
-    'CSS',
-    'JavaScript'
-  ]);
+  const [searchFilters, setSearchFilters] = useState<string[]>([]);
+  const [filteredJobListings, setFilteredJobListings] = useState<JobListingObj[]>([]);
 
-  const handleClearFilter = () => setSearchFilters([]);
+  const handleClearFilter = () => {
+    setSearchFilters([]);
+    setFilteredJobListings([]);
+  };
 
   const handleRemoveFilter = (term: string) => {
     const searchFilterArr = searchFilters.filter((filter) => filter !== term);
+    console.log({ searchFilterArr });
     setSearchFilters(searchFilterArr);
+    // eslint-disable-next-line array-callback-return
+    const removeJobListings = filteredJobListings.filter((job) => {
+      if (
+        searchFilterArr.includes(job.role) ||
+        searchFilterArr.includes(job.level)
+      ) {
+        return job;
+      }
+
+      for (var lang of job.languages) {
+        if (searchFilterArr.includes(lang)) return job;
+      }
+
+      for (var tool of job.tools) {
+        if (searchFilterArr.includes(tool)) return job;
+      }
+    });
+    setFilteredJobListings(removeJobListings);
   };
 
   const handleAddFilter = (term: string) => {
     if (!searchFilters.includes(term)) {
       const searchFilterArr = [...searchFilters, term];
       setSearchFilters(searchFilterArr);
+
+      const jobListingData = jobData.filter((job) => {
+        return (
+          job.role === term ||
+          job.level === term ||
+          job.languages.includes(term) ||
+          job.tools.includes(term)
+        );
+      });
+      const allJobListings = new Set([
+        ...jobListingData,
+        ...filteredJobListings
+      ]);
+      setFilteredJobListings(Array.from(allJobListings));
     }
   };
 
@@ -43,7 +76,14 @@ function App() {
       )}
       <section className="main-content pt-12">
         <section className="job-listings flex flex-col gap-[40px]">
-          <JobListing jobsData={jobListings} addFilter={handleAddFilter} />
+          {filteredJobListings.length > 0 ? (
+            <JobListing
+              jobsData={filteredJobListings}
+              addFilter={handleAddFilter}
+            />
+          ) : (
+            <JobListing jobsData={jobData} addFilter={handleAddFilter} />
+          )}
         </section>
       </section>
     </div>
