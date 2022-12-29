@@ -8,7 +8,9 @@ import { JobListingObj } from './types/JobListingObj';
 
 function App() {
   const [searchFilters, setSearchFilters] = useState<string[]>([]);
-  const [filteredJobListings, setFilteredJobListings] = useState<JobListingObj[]>([]);
+  const [filteredJobListings, setFilteredJobListings] = useState<
+    JobListingObj[]
+  >([]);
 
   const handleClearFilter = () => {
     setSearchFilters([]);
