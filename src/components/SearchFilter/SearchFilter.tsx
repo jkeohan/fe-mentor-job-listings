@@ -25,7 +25,7 @@ export function SearchFilter({ filters, clearFilter, removeFilter }: Props) {
   ));
 
   return (
-    <div className="flex bg-white p-4 w-[327px] m-auto relative">
+    <div className="flex bg-white p-4 w-[327px] md:m-w-[90%] md:w-3/4 m-auto relative">
       <div className="flex-wrap flex gap-[15px] grow">{activeFilters}</div>
       <div
         onClick={clearFilter}
@@ -36,4 +36,3 @@ export function SearchFilter({ filters, clearFilter, removeFilter }: Props) {
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-@import-normalize;// 
+@import-normalize; //
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&display=swap');
 @tailwind base;
 @tailwind components;
@@ -19,15 +19,15 @@
   font-weight: 500;
   min-height: 100vh;
   text-align: center;
-  width: 375px;
+  // width: 375px;
 }
 
-.header {
-  height: 157px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: black;
-}
+// .header {
+//   height: 160px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: calc(10px + 2vmin);
+//   color: black;
+// }

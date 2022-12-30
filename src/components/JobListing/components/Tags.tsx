@@ -17,7 +17,7 @@ export function Tags({ tags, addFilter }: Props) {
   ));
 
   return (
-    <div className="flex-wrap flex gap-[15px] grow bg-white pt-4">
+    <div className="flex flex-wrap justify-end gap-[15px] grow bg-white pt-4 md:px-4">
       {activeFilters}
     </div>
   );

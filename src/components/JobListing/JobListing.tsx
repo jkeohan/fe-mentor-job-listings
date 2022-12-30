@@ -17,11 +17,15 @@ export function JobListing({ jobsData, addFilter }: Props) {
 
     return (
       <article
-        className="job-listing p-4 pt-0 text-left rounded-md shadow-xl shadow-desaturated-dark-cyan/30"
+        className="job-listing p-4 pt-0 md:pt-4 text-left rounded-md shadow-xl shadow-desaturated-dark-cyan/30 md:flex md:items-center md:justify-center md:gap-5"
         key={job.id}
       >
         {/* <ReactSVG src={svgPath} /> */}
-        <img src={logos.photosnap} alt="logo" className="w-12 " />
+        <img
+          src={svgPath}
+          alt="logo"
+          className="-mt-[25px] md:mt-0 w-12 md:w-[80px] md:h-[80px]"
+        />
         {/* <ReactSVG
           src={svgPath}
           // style={svgStyle}
@@ -36,7 +40,7 @@ export function JobListing({ jobsData, addFilter }: Props) {
         /> */}
         <div>
           <div className="flex items-center gap-[10px] my-2">
-            <div className="text-xs pr-5 text-desaturated-dark-cyan font-bold">
+            <div className="text-xs md:text-base pr-5 md:pr-2.5 text-desaturated-dark-cyan font-bold">
               {job.company}
             </div>
             {job.new && (
@@ -50,7 +54,7 @@ export function JobListing({ jobsData, addFilter }: Props) {
               </div>
             )}
           </div>
-          <div className="text-sm hover:text-desaturated-dark-cyan hover:cursor-pointer">
+          <div className="text-sm md:text-base font-bold hover:text-desaturated-dark-cyan hover:cursor-pointer">
             {job.position}
           </div>
           <div className="flex items-center gap-[10px] my-2 text-dark-grayish-cyan">
