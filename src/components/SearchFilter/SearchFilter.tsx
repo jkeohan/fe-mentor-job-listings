@@ -10,10 +10,15 @@ interface Props {
 export function SearchFilter({ filters, clearFilter, removeFilter }: Props) {
   const activeFilters = filters.map((filter, index) => (
     <div className="flex" key={filter}>
-      <div className="flex items-center leading-none py-1 px-2 bg-light-grayish-cyan-background text-desaturated-dark-cyan rounded-l-md font-bold">
+      <div
+        key={filter}
+        className="flex items-center leading-none py-2 pb-1 px-2 bg-light-grayish-cyan-background text-desaturated-dark-cyan rounded-l-md font-bold"
+      >
         {filter}
       </div>
-      <div className="cursor-pointer text-white bg-desaturated-dark-cyan hover:bg-black rounded-r-md py-[7px] px-[5px]">
+
+      <div className="cursor-pointer text-white bg-desaturated-dark-cyan hover:bg-black rounded-r-md 
+     p-[2px]">
         <img
           className="w-6 h-6"
           src={removeButton}
@@ -36,4 +41,3 @@ export function SearchFilter({ filters, clearFilter, removeFilter }: Props) {
     </div>
   );
 }
-
