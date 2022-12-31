@@ -110,7 +110,7 @@ function App() {
           />
         </div>
       )}
-      <section className="main-content pt-6 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
+      <section className="main-content pt-12 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
         <section className="job-listings flex flex-col gap-10 md:gap-4">
           {filterListings.length > 0 ? (
             <JobListing jobsData={filterListings} addFilter={handleAddFilter} />
