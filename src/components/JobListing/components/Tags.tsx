@@ -9,7 +9,7 @@ export function Tags({ tags, addFilter }: Props) {
   const activeFilters = tags.map((tag, index) => (
     <div
       key={tag}
-      className="filter flex items-center leading-none py-2 px-3 bg-light-grayish-cyan-background text-desaturated-dark-cyan rounded-t-md rounded-b-md font-bold hover:bg-desaturated-dark-cyan hover:text-white hover:cursor-pointer"
+      className="flex items-center leading-none py-2 pb-1 px-3 bg-light-grayish-cyan-background text-desaturated-dark-cyan rounded-t-md rounded-b-md font-bold hover:bg-desaturated-dark-cyan hover:text-white hover:cursor-pointer"
       onClick={() => addFilter(tag)}
     >
       {tag}
@@ -17,7 +17,7 @@ export function Tags({ tags, addFilter }: Props) {
   ));
 
   return (
-    <div className="flex-wrap flex gap-[15px] grow bg-white pt-4">
+    <div className="flex flex-wrap gap-[15px] grow bg-white pt-4">
       {activeFilters}
     </div>
   );
