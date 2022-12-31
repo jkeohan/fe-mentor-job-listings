@@ -1,8 +1,6 @@
 import React from 'react';
 import { Tags } from './components/Tags';
 import { JobListingObj } from '../../types/JobListingObj';
-import { photosnap } from '../../assets/images';
-
 
 interface Props {
   jobsData: JobListingObj[];
@@ -19,7 +17,7 @@ export function JobListing({ jobsData, addFilter }: Props) {
 
     return (
       <article
-        className="job-listing p-4 pt-0 md:pt-4 text-left rounded-md shadow-xl shadow-desaturated-dark-cyan/30 md:flex md:items-center md:justify-center md:gap-5"
+        className="job-listing bg-white p-4 pt-0 md:pt-4 text-left rounded-md shadow-xl shadow-desaturated-dark-cyan/30 md:flex md:items-center md:justify-center md:gap-5"
         key={job.id}
       >
         <img src={`../assets/images/${job.logo}`} alt="logo" className="-mt-[25px] md:mt-0 w-12 md:w-[80px] md:h-[80px]"/>

@@ -38,3 +38,4 @@ So a quick google search led me to [turn off "Unkown at" elsint rule](https://fl
 - [Adding TypeScript to CRA](https://create-react-app.dev/docs/adding-typescript/)
 - [How To Structure React Projects From Beginner To Advanced](https://blog.webdevsimplified.com/2022-07/react-folder-structure/)
 - [Hero Icons](https://heroicons.dev/?query=x)
+- [Set VSCode as default merge editor](https://medium.com/geekculture/configure-visual-studio-code-as-a-default-git-editor-diff-tool-or-merge-tool-291fd7088cc9)

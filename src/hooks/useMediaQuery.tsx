@@ -1,25 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
+export default function useMediaQuery(minWidth: Number): Boolean {
+  const [isBelowBreakpoint, setIsBelowBreakpoint] = useState<boolean>(false);
 
-function useMediaQuery(minWidth: Number): Boolean {
-
-    const [belowBreakpoint, setBelowBreakpoint] = useState<boolean>(false);
-
-    useEffect(() => {
-
-        const updateBannerImage = () => {
+  useEffect(() => {
+    const queryMinWidth = () => {
       if (window.innerWidth > minWidth) {
-        setBelowBreakpoint(true);
+        setIsBelowBreakpoint(true);
       } else {
-        setBelowBreakpoint(false);
+        setIsBelowBreakpoint(false);
       }
     };
 
-    window.addEventListener('resize', updateBannerImage);
-    return () => window.removeEventListener('resize', updateBannerImage);
-  }, []);
+    window.addEventListener('resize', queryMinWidth);
+    return () => window.removeEventListener('resize', queryMinWidth);
+  }, [minWidth]);
 
-  return belowBreakpoint
+  return isBelowBreakpoint;
 }
-
-export default useMediaQuery

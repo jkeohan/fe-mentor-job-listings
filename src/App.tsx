@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import mobileHeaderSvg from './assets/images/bg-header-mobile.svg';
 import desktopHeaderSvg from './assets/images/bg-header-desktop.svg';
@@ -7,34 +7,12 @@ import { JobListing } from './components/JobListing';
 import jobData from './data/data.json';
 import { JobListingObj } from './types/JobListingObj';
 
+import useMediaQuery from './hooks/useMediaQuery';
+
 function App() {
   const [searchFilters, setSearchFilters] = useState<string[]>([]);
   const [filterListings, setFilterListings] = useState<JobListingObj[]>([]);
-
-  // set state for mobile breakpoint for image change
-  const [belowBreakpoint, setBelowBreakpoint] = useState<boolean>(false);
-
-  // useEffect to check for breakpoint change
-  // if window.innerwidth is less than 376px then set
-  // state to true else set to false
-  useEffect(() => {
-    // if (window.innerWidth < 376) {
-    //   setBelowBreakpoint(true);
-    // } else {
-    //   setBelowBreakpoint(false);
-    // }
-
-    const updateBannerImage = () => {
-      if (window.innerWidth > 1023) {
-        setBelowBreakpoint(true);
-      } else {
-        setBelowBreakpoint(false);
-      }
-    };
-
-    window.addEventListener('resize', updateBannerImage);
-    return () => window.removeEventListener('resize', updateBannerImage);
-  }, []);
+  const isBelowBreakpoint = useMediaQuery(1023);
 
   const handleClearFilter = () => {
     setSearchFilters([]);
@@ -85,9 +63,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* can remove header className */}
-      <header className="header">
-        {belowBreakpoint ? (
+      <header>
+        {isBelowBreakpoint ? (
           <img
             className="h-36 w-full bg-desaturated-dark-cyan"
             src={desktopHeaderSvg}
@@ -101,16 +78,20 @@ function App() {
           />
         )}
       </header>
-      {searchFilters.length > 0 && (
-        <div className="-mt-10 search-filter">
-          <SearchFilter
-            filters={searchFilters}
-            clearFilter={handleClearFilter}
-            removeFilter={handleRemoveFilter}
-          />
-        </div>
-      )}
-      <section className="main-content pt-6 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
+      <div
+        className={
+          searchFilters.length > 0
+            ? '-mt-8 opacity-100'
+            : '-mt-8 opacity-0 pb-[4px]'
+        }
+      >
+        <SearchFilter
+          filters={searchFilters}
+          clearFilter={handleClearFilter}
+          removeFilter={handleRemoveFilter}
+        />
+      </div>
+      <section className="pt-12 main-content md:pt-14 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
         <section className="job-listings flex flex-col gap-10 md:gap-4">
           {filterListings.length > 0 ? (
             <JobListing jobsData={filterListings} addFilter={handleAddFilter} />
