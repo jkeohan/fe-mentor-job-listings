@@ -91,7 +91,7 @@ function App() {
           removeFilter={handleRemoveFilter}
         />
       </div>
-      <section className="pt-12 main-content md:pt-14 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
+      <section className="py-12 main-content md:pt-14 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
         <section className="job-listings flex flex-col gap-10 md:gap-4">
           {filterListings.length > 0 ? (
             <JobListing jobsData={filterListings} addFilter={handleAddFilter} />
