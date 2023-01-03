@@ -1,5 +1,5 @@
 import React from 'react';
-import {Tags} from './components/Tags'
+import {Tags} from './components'
 import { JobListingObj } from '../../types/JobListingObj';
 
 interface Props {
