@@ -5,9 +5,10 @@ import { JobListingObj } from '../../types/JobListingObj';
 interface Props {
   jobsData: JobListingObj[];
   addFilter: (term: string) => void;
+  filters: string[];
 }
 
-export function JobListing({ jobsData, addFilter }: Props) {
+export function JobListing({ jobsData, addFilter, filters }: Props) {
   const jobListingsMarkup = jobsData.map((job, index) => {
     const tags = [job.role, job.level, ...job.languages, ...job.tools];
 
@@ -49,7 +50,7 @@ export function JobListing({ jobsData, addFilter }: Props) {
           </div>
         </div>
         <hr className="my-2" />
-        <Tags tags={tags} addFilter={addFilter} />
+        <Tags tags={tags} addFilter={addFilter} filters={filters}/>
       </article>
     );
   });

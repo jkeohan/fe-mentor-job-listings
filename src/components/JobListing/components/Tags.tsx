@@ -3,18 +3,24 @@ import React from 'react';
 interface Props {
   tags: string[];
   addFilter: (term: string) => void;
+  filters: string[];
 }
 
-export function Tags({ tags, addFilter }: Props) {
-  const tagMarkup = tags.map((tag, index) => (
+export function Tags({ tags, addFilter,filters }: Props) {
+  const tagMarkup = tags.map((tag, index) => {
+  const isActiveTag = filters.includes(tag)
+
+  return (
     <div
       key={tag}
-      className="flex items-center leading-none py-2 pb-1 px-3 bg-light-grayish-cyan-background text-desaturated-dark-cyan rounded-t-md rounded-b-md font-bold hover:bg-desaturated-dark-cyan hover:text-white hover:cursor-pointer"
+      className={`flex-center tag-color leading-none py-2 pb-1 px-3 rounded-t-md rounded-b-md font-bold
+      ${isActiveTag ? 'active-tag-color' : 'hover:bg-desaturated-dark-cyan hover:text-white hover:cursor-pointer'}`}
       onClick={() => addFilter(tag)}
     >
       {tag}
     </div>
-  ));
+  )
+});
 
   return (
     <div className="flex flex-wrap gap-[15px] grow bg-white pt-4 md:px-4 md:justify-end">
