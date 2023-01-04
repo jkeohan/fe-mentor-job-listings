@@ -20,6 +20,9 @@
   .tag-color {
     @apply bg-light-grayish-cyan-background text-desaturated-dark-cyan;
   }
+  .active-tag-color {
+    @apply bg-desaturated-dark-cyan text-white
+  }
 }
 
 .App {
