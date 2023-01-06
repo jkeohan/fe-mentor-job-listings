@@ -23,22 +23,23 @@ function App() {
     const searchFilterArr = searchFilters.filter((filter) => filter !== term);
     console.log({ searchFilterArr });
     setSearchFilters(searchFilterArr);
-    // eslint-disable-next-line array-callback-return
     const removeJobListings = filterListings.filter((job) => {
       if (
         searchFilterArr.includes(job.role) ||
         searchFilterArr.includes(job.level)
       ) {
-        return job;
+        return true;
       }
 
       for (var lang of job.languages) {
-        if (searchFilterArr.includes(lang)) return job;
+        if (searchFilterArr.includes(lang)) return true;
       }
 
       for (var tool of job.tools) {
-        if (searchFilterArr.includes(tool)) return job;
+        if (searchFilterArr.includes(tool)) return true;
       }
+
+      return false
     });
     setFilterListings(removeJobListings);
   };
@@ -99,6 +100,7 @@ function App() {
           <JobListing
             jobsData={activeJobListings}
             addFilter={handleAddFilter}
+            removeFilter={handleRemoveFilter}
             filters={searchFilters}
           />
         </section>

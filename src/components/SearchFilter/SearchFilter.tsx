@@ -17,8 +17,10 @@ export function SearchFilter({ filters, clearFilter, removeFilter }: Props) {
         {filter}
       </div>
 
-      <div className="cursor-pointer text-white bg-desaturated-dark-cyan hover:bg-black rounded-r-md 
-     p-[2px]">
+      <div
+        className="cursor-pointer text-white bg-desaturated-dark-cyan hover:bg-black rounded-r-md 
+     p-[2px]"
+      >
         <img
           className="w-6 h-6"
           src={removeButton}
