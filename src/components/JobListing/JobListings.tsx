@@ -1,23 +1,21 @@
 import React from 'react';
 import { Tags } from './components';
-import { JobListingObj } from '../../types/JobListingObj';
+import { JobTransformed } from '../../types/JobListing';
 
 interface Props {
-  jobsData: JobListingObj[];
+  jobsData: JobTransformed[];
   addFilter: (term: string) => void;
   removeFilter: (term: string) => void;
   filters: string[];
 }
 
-export function JobListing({
+export function JobListings({
   jobsData,
   addFilter,
   removeFilter,
   filters
 }: Props) {
   const jobListingsMarkup = jobsData.map((job, index) => {
-    const tags = [job.role, job.level, ...job.languages, ...job.tools];
-
     return (
       <article
         className="job-listing bg-white p-4 pt-0 md:pt-4 text-left rounded-md shadow-xl shadow-desaturated-dark-cyan/30 md:flex md:items-center md:justify-center md:gap-5"
@@ -33,12 +31,12 @@ export function JobListing({
             <div className="text-xs md:text-base pr-5 md:pr-2.5 text-desaturated-dark-cyan font-bold">
               {job.company}
             </div>
-            {job.new && (
+            {job.isNew && (
               <span className="text-sm p-2 pb-1 leading-none text-white rounded-full bg-desaturated-dark-cyan ">
                 NEW!
               </span>
             )}
-            {job.featured && (
+            {job.isFeatured && (
               <span className="text-sm p-2 pb-1 leading-none text-white rounded-full bg-black ">
                 FEATURED
               </span>
@@ -57,7 +55,7 @@ export function JobListing({
         </div>
         <hr className="my-2" />
         <Tags
-          tags={tags}
+          tags={job.tags}
           addFilter={addFilter}
           removeFilter={removeFilter}
           filters={filters}

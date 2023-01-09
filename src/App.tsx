@@ -3,67 +3,53 @@ import './App.scss';
 import mobileHeaderSvg from './assets/images/bg-header-mobile.svg';
 import desktopHeaderSvg from './assets/images/bg-header-desktop.svg';
 import { SearchFilter } from './components/SearchFilter';
-import { JobListing } from './components/JobListing';
-import jobData from './data/data.json';
-import { JobListingObj } from './types/JobListingObj';
+import { JobListings } from './components/JobListing';
+import jobDataArr from './data/data.json';
+import type { JobTransformed } from './types/JobListing';
+import { transformJobListing } from './utilities';
 
 import useMediaQuery from './hooks/useMediaQuery';
 
+const jobData = transformJobListing(jobDataArr);
+
 function App() {
   const [searchFilters, setSearchFilters] = useState<string[]>([]);
-  const [filterListings, setFilterListings] = useState<JobListingObj[]>([]);
+  const [filteredJobListings, setFilteredJobListings] = useState<
+    JobTransformed[]
+  >([]);
   const isBelowBreakpoint = useMediaQuery(1023);
 
   const handleClearFilter = () => {
     setSearchFilters([]);
-    setFilterListings([]);
+    setFilteredJobListings([]);
   };
 
   const handleRemoveFilter = (term: string) => {
     const searchFilterArr = searchFilters.filter((filter) => filter !== term);
-    console.log({ searchFilterArr });
+    const jobListingData = filteredJobListings.filter((job) =>
+      searchFilterArr.some((filter) => job.tags.includes(filter))
+    );
     setSearchFilters(searchFilterArr);
-    const removeJobListings = filterListings.filter((job) => {
-      if (
-        searchFilterArr.includes(job.role) ||
-        searchFilterArr.includes(job.level)
-      ) {
-        return true;
-      }
-
-      for (var lang of job.languages) {
-        if (searchFilterArr.includes(lang)) return true;
-      }
-
-      for (var tool of job.tools) {
-        if (searchFilterArr.includes(tool)) return true;
-      }
-
-      return false
-    });
-    setFilterListings(removeJobListings);
+    setFilteredJobListings(jobListingData);
   };
 
   const handleAddFilter = (term: string) => {
     if (!searchFilters.includes(term)) {
       const searchFilterArr = [...searchFilters, term];
+      const jobListingData = jobData.filter((job: JobTransformed) =>
+        job.tags.includes(term)
+      );
+      const allJobListings = new Set([
+        ...jobListingData,
+        ...filteredJobListings
+      ]);
       setSearchFilters(searchFilterArr);
-
-      const jobListingData = jobData.filter((job) => {
-        return (
-          job.role === term ||
-          job.level === term ||
-          job.languages.includes(term) ||
-          job.tools.includes(term)
-        );
-      });
-      const allJobListings = new Set([...jobListingData, ...filterListings]);
-      setFilterListings(Array.from(allJobListings));
+      setFilteredJobListings(Array.from(allJobListings));
     }
   };
 
   const activeJobListings =
-    filterListings.length > 0 ? filterListings : jobData;
+    filteredJobListings.length > 0 ? filteredJobListings : jobData;
 
   return (
     <div className="App">
@@ -97,7 +83,7 @@ function App() {
       </div>
       <section className="py-12 main-content md:pt-14 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
         <section className="job-listings flex flex-col gap-10 md:gap-4">
-          <JobListing
+          <JobListings
             jobsData={activeJobListings}
             addFilter={handleAddFilter}
             removeFilter={handleRemoveFilter}

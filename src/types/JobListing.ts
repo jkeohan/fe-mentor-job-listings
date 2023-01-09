@@ -1,4 +1,4 @@
-export type JobListingObj = {
+export type Job = {
   id: number;
   company: string;
   logo: string;
@@ -12,4 +12,10 @@ export type JobListingObj = {
   location: string;
   languages: string[];
   tools: string[];
+};
+
+export type JobTransformed = Omit<Job, 'new' | 'featured'> & {
+  isNew: Boolean;
+  isFeatured: Boolean;
+  tags: string[];
 };
