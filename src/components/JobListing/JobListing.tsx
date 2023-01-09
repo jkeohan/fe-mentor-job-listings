@@ -1,14 +1,20 @@
 import React from 'react';
-import {Tags} from './components'
+import { Tags } from './components';
 import { JobListingObj } from '../../types/JobListingObj';
 
 interface Props {
   jobsData: JobListingObj[];
   addFilter: (term: string) => void;
+  removeFilter: (term: string) => void;
   filters: string[];
 }
 
-export function JobListing({ jobsData, addFilter, filters }: Props) {
+export function JobListing({
+  jobsData,
+  addFilter,
+  removeFilter,
+  filters
+}: Props) {
   const jobListingsMarkup = jobsData.map((job, index) => {
     const tags = [job.role, job.level, ...job.languages, ...job.tools];
 
@@ -50,7 +56,12 @@ export function JobListing({ jobsData, addFilter, filters }: Props) {
           </div>
         </div>
         <hr className="my-2" />
-        <Tags tags={tags} addFilter={addFilter} filters={filters}/>
+        <Tags
+          tags={tags}
+          addFilter={addFilter}
+          removeFilter={removeFilter}
+          filters={filters}
+        />
       </article>
     );
   });
