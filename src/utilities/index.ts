@@ -1,0 +1,1 @@
+export { transformJobListing } from './transformJobListing';
