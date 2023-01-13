@@ -30,13 +30,14 @@ Your users should be able to:
 
 [View Full Requirements Here](./README-requirements.md)
 
-### Screenshot
-
-![Design preview for the Job listings with filtering coding challenge](./static-job-listings-master/design/desktop-preview.jpg)
 ### Links
 
 - Solution URL: [https://github.com/jkeohan/fe-mentor-job-listings](https://github.com/jkeohan/fe-mentor-job-listings)
 - Live Site URL: [https://fe-mentor-job-listings.netlify.app/](https://fe-mentor-job-listings.netlify.app/)
+
+
+### Screenshot
+![Design preview for the Job listings with filtering coding challenge](./static-job-listings-master/design/desktop-preview.jpg)
 
 ## My process
 TBD
@@ -51,11 +52,11 @@ TBD
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+TBD
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+TBD
 
 ### Useful resources
 
