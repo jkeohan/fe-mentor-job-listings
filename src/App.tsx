@@ -3,7 +3,7 @@ import './App.scss';
 import mobileHeaderSvg from './assets/images/bg-header-mobile.svg';
 import desktopHeaderSvg from './assets/images/bg-header-desktop.svg';
 import { SearchFilter } from './components/SearchFilter';
-import { JobListings } from './components/JobListing';
+import { JobListings } from './components/JobListings';
 import jobDataArr from './data/data.json';
 import type { JobTransformed } from './types/JobListing';
 import { transformJobListing } from './utilities';

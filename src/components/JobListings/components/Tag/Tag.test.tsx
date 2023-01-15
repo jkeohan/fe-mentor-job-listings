@@ -2,47 +2,38 @@ import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Tags } from './Tags';
+import { Tag } from './Tag';
 
 const mockData = {
-  tags: ['HTML', 'CSS'],
+  name: 'CSS',
   addFilter: jest.fn(),
   removeFilter: jest.fn(),
-  filters: []
+  isActive: false
 };
 
-describe('Tags', () => {
+describe('Tag', () => {
   // screen.logTestingPlaygroundURL();
-  it('renders all tags in the tags array and confirms they do not have the active-tag-color class assigned', () => {
-    render(<Tags {...mockData} />);
+  it('renders the tag in its default state where isActive is false', () => {
+    render(<Tag {...mockData} />);
 
     const CSSTag = screen.getByText(/css/i);
-    const HTMLTag = screen.getByText(/html/i);
-
     expect(CSSTag).toBeInTheDocument();
     expect(CSSTag).not.toHaveClass('active-tag-color');
-
-    expect(HTMLTag).toBeInTheDocument();
-    expect(HTMLTag).not.toHaveClass('active-tag-color');
   });
 
-  it('assigns the active-tag-color class to all tags in the filters array', () => {
-    const dataWithActiveFilter = {
+  it('renders the tag with the active-tag-color class when isActive is true', () => {
+    const tagIsActive = {
       ...mockData,
-      tags: ['HTML', 'CSS', 'Sass'],
-      filters: ['CSS', 'HTML']
+      isActive: true
     };
 
-    render(<Tags {...dataWithActiveFilter} />);
+    render(<Tag {...tagIsActive} />);
     expect(screen.getByText(/css/i)).toHaveClass('active-tag-color');
-    expect(screen.getByText(/html/i)).toHaveClass('active-tag-color');
-    expect(screen.getByText(/sass/i)).not.toHaveClass('active-tag-color');
   });
 
   it('tests clicking a tag calls the addFilter function', async () => {
     const mockAddFilter = jest.fn();
-
-    render(<Tags {...mockData} addFilter={mockAddFilter} />);
+    render(<Tag {...mockData} addFilter={mockAddFilter} />);
 
     await userEvent.click(screen.getByText(/css/i));
     expect(mockAddFilter).toHaveBeenCalled();
@@ -50,10 +41,10 @@ describe('Tags', () => {
 
   it('tests clicking an active tag will call the removeFilter function', async () => {
     const mockRemoveFilter = jest.fn();
-    const dataWithActiveFilter = {...mockData,filters: ['CSS']};
+    const dataWithActiveFilter = { ...mockData, isActive:true };
 
     render(
-      <Tags {...{ ...dataWithActiveFilter }} removeFilter={mockRemoveFilter} />
+      <Tag {...{ ...dataWithActiveFilter }} removeFilter={mockRemoveFilter} />
     );
 
     await userEvent.click(screen.getByText(/css/i));
