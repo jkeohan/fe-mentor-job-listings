@@ -19,3 +19,11 @@ export type JobTransformed = Omit<Job, 'new' | 'featured'> & {
   isFeatured: Boolean;
   tags: string[];
 };
+
+export interface JobContextType {
+  jobDataArr: Job[];
+  jobData: JobTransformed[];
+  searchFilters: string[];
+  filteredJobListings: JobTransformed[];
+  dispatch: () => void;
+};

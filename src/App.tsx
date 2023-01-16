@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './App.scss';
 import mobileHeaderSvg from './assets/images/bg-header-mobile.svg';
 import desktopHeaderSvg from './assets/images/bg-header-desktop.svg';
@@ -7,7 +7,7 @@ import { JobListings } from './components/JobListings';
 import jobDataArr from './data/data.json';
 import type { JobTransformed } from './types/JobListing';
 import { transformJobListing } from './utilities';
-
+import JobListingProvider from './context/jobListingContext';
 import useMediaQuery from './hooks/useMediaQuery';
 
 const jobData = transformJobListing(jobDataArr);
@@ -68,29 +68,31 @@ function App() {
           />
         )}
       </header>
-      <div
-        className={
-          searchFilters.length > 0
-            ? '-mt-8 opacity-100'
-            : '-mt-8 opacity-0 pb-[4px]'
-        }
-      >
-        <SearchFilter
-          filters={searchFilters}
-          clearFilter={handleClearFilter}
-          removeFilter={handleRemoveFilter}
-        />
-      </div>
-      <section className="py-12 main-content md:pt-14 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
-        <section className="job-listings flex flex-col gap-10 md:gap-4">
-          <JobListings
-            jobsData={activeJobListings}
-            addFilter={handleAddFilter}
-            removeFilter={handleRemoveFilter}
+      <JobListingProvider>
+        <div
+          className={
+            searchFilters.length > 0
+              ? '-mt-8 opacity-100'
+              : '-mt-8 opacity-0 pb-[4px]'
+          }
+        >
+          <SearchFilter
             filters={searchFilters}
+            clearFilter={handleClearFilter}
+            removeFilter={handleRemoveFilter}
           />
+        </div>
+        <section className="py-12 main-content md:pt-14 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
+          <section className="job-listings flex flex-col gap-10 md:gap-4">
+            <JobListings
+              jobsData={activeJobListings}
+              addFilter={handleAddFilter}
+              removeFilter={handleRemoveFilter}
+              filters={searchFilters}
+            />
+          </section>
         </section>
-      </section>
+      </JobListingProvider>
     </div>
   );
 }
