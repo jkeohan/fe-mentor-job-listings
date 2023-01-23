@@ -43,3 +43,4 @@ So a quick google search led me to [turn off "Unkown at" elsint rule](https://fl
 - [Add Pull Request Template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository)
 - [how-switch-node-js-versions-nvm](https://blog.logrocket.com/how-switch-node-js-versions-nvm/)
 - [classes-in-react-testing-library](https://www.webtips.dev/solutions/classes-in-react-testing-library)
+- [watchman-crawl-failed-retrying-once-with-node-crawler](https://stackoverflow.com/questions/49443341/watchman-crawl-failed-retrying-once-with-node-crawler)

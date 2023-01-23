@@ -32,8 +32,13 @@ describe('Tag', () => {
   });
 
   it('tests clicking a tag calls the addFilter function', async () => {
+    const tagIsNotActive = {
+      ...mockData,
+      isActive: false
+    };
+
     const mockAddFilter = jest.fn();
-    render(<Tag {...mockData} addFilter={mockAddFilter} />);
+    render(<Tag {...tagIsNotActive } addFilter={mockAddFilter} />);
 
     await userEvent.click(screen.getByText(/css/i));
     expect(mockAddFilter).toHaveBeenCalled();
@@ -41,10 +46,10 @@ describe('Tag', () => {
 
   it('tests clicking an active tag will call the removeFilter function', async () => {
     const mockRemoveFilter = jest.fn();
-    const dataWithActiveFilter = { ...mockData, isActive:true };
+    const tagIsActive = { ...mockData, isActive:true };
 
     render(
-      <Tag {...{ ...dataWithActiveFilter }} removeFilter={mockRemoveFilter} />
+      <Tag {...{ ...tagIsActive }} removeFilter={mockRemoveFilter} />
     );
 
     await userEvent.click(screen.getByText(/css/i));
