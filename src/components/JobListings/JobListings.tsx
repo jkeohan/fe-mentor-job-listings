@@ -1,27 +1,16 @@
 import React from 'react';
 import { JobListing } from './components/JobListing';
 import { useJobListingContext } from '../../context';
+import { JobTransformed } from '../../types/JobListing';
 
-interface Props {
-  addFilter: (term: string) => void;
-  removeFilter: (term: string) => void;
-}
+export function JobListings() {
+  const {jobData: {jobData, filteredJobListings, searchFilters}}  = useJobListingContext();
+  const activeJobListings =
+      filteredJobListings.length > 0 ? filteredJobListings : jobData;
 
-export function JobListings({
-  addFilter,
-  removeFilter,
-}: Props) {
-  const {jobData, searchFilters}  = useJobListingContext();
-
-  const jobListingsMarkup = jobData.map((job) => {
+  const jobListingsMarkup = activeJobListings.map((job: JobTransformed) => {
     return (
-        <JobListing
-          key={job.id}
-          job={job}
-          addFilter={addFilter}
-          removeFilter={removeFilter}
-          filters={searchFilters}
-        />
+      <JobListing key={job.id} job={job} filters={searchFilters} />
     );
   });
   return <>{jobListingsMarkup}</>

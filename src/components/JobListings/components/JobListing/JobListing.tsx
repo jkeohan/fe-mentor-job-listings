@@ -4,18 +4,13 @@ import { JobTransformed } from '../../../../types/JobListing';
 
 interface Props {
   job: JobTransformed;
-  addFilter: (term: string) => void;
-  removeFilter: (term: string) => void;
   filters: string[];
 }
 
-export function JobListing({ job, addFilter, removeFilter, filters }: Props) {
-  const tagMarkup = job.tags.map(tag => {
-    const isActive = filters.includes(tag)
-    return (
-      <Tag key={tag} name={tag} addFilter={addFilter} removeFilter={removeFilter} isActive={isActive}/>
-    )
-  })
+export function JobListing({ job, filters }: Props) {
+  const tagMarkup = job.tags.map((tag) => {
+    return <Tag key={tag} name={tag} />;
+  });
   const ariaLabel = `job listing ${job.position}`;
 
   return (
