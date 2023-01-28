@@ -58,39 +58,41 @@ function App() {
           <img
             className="h-36 w-full bg-desaturated-dark-cyan"
             src={desktopHeaderSvg}
-            alt="desktop-header"
+            alt=""
           />
         ) : (
           <img
             className="w-full h-36 bg-desaturated-dark-cyan"
             src={mobileHeaderSvg}
-            alt="mobile-header"
+            alt=""
           />
         )}
       </header>
-      <div
-        className={
-          searchFilters.length > 0
-            ? '-mt-8 opacity-100'
-            : '-mt-8 opacity-0 pb-[4px]'
-        }
-      >
-        <SearchFilter
-          filters={searchFilters}
-          clearFilter={handleClearFilter}
-          removeFilter={handleRemoveFilter}
-        />
-      </div>
-      <section className="py-12 main-content md:pt-14 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
-        <section className="job-listings flex flex-col gap-10 md:gap-4">
-          <JobListings
-            jobsData={activeJobListings}
-            addFilter={handleAddFilter}
-            removeFilter={handleRemoveFilter}
+      <main>
+        <div
+          className={
+            searchFilters.length > 0
+              ? '-mt-8 opacity-100'
+              : '-mt-8 opacity-0 pb-[4px]'
+          }
+        >
+          <SearchFilter
             filters={searchFilters}
+            clearFilter={handleClearFilter}
+            removeFilter={handleRemoveFilter}
           />
+        </div>
+        <section className="py-12 main-content md:pt-14 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
+          <section className="job-listings flex flex-col gap-10 md:gap-4">
+            <JobListings
+              jobsData={activeJobListings}
+              addFilter={handleAddFilter}
+              removeFilter={handleRemoveFilter}
+              filters={searchFilters}
+            />
+          </section>
         </section>
-      </section>
+      </main>
     </div>
   );
 }
