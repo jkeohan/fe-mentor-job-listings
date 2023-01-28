@@ -27,20 +27,14 @@ export type JobData = {
 };
 
 export enum SearchFilterActions {
-  AddFilter = 'ADD_FILTER',
-  RemoveFilter = 'REMOVE_FILTER',
-  ClearFilter = 'CLEAR_FILTER'
+  ClearFilter = 'CLEAR_FILTER',
+  ToggleFilter = 'TOGGLE_FILTER'
 }
 
 export type SearchFilterAction =
   | {
-      type: 'ADD_FILTER';
+      type: SearchFilterActions.ClearFilter;
+    }
+  | { type: SearchFilterActions.ToggleFilter;
       value: string;
     }
-  | {
-      type: 'REMOVE_FILTER';
-      value: string;
-    }
-  | {
-      type: 'CLEAR_FILTER';
-    };

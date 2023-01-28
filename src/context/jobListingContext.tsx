@@ -12,39 +12,44 @@ const defaultValues: JobData = {
   filteredJobListings: []
 };
 
-const jobContext = {
-  jobData: defaultValues,
-  setJobData: (action: SearchFilterAction): void => {}
-};
-
-const JobListingContext =
-  createContext<{
-    jobData: JobData;
-    setJobData: React.Dispatch<SearchFilterAction>;
-  }>(jobContext);
-
+const JobListingDataContext = createContext<JobData>(defaultValues);
+const JobListingDispatcherContext = createContext<
+  React.Dispatch<SearchFilterAction>>((action: SearchFilterAction): void => {});
 interface Props {
   children: React.ReactNode;
 }
 
 export const JobListingProvider: React.FC<Props> = ({ children }) => {
-  const [jobData, setJobData] = useReducer(jobListingReducer, defaultValues);
+  const [jobData, dispatch] = useReducer(jobListingReducer, defaultValues);
 
   return (
-    <JobListingContext.Provider value={{ jobData, setJobData }}>
-      {children}
-    </JobListingContext.Provider>
+    <JobListingDispatcherContext.Provider value={dispatch}>
+      <JobListingDataContext.Provider value={jobData}>
+        {children}
+      </JobListingDataContext.Provider>
+    </JobListingDispatcherContext.Provider>
   );
 };
 
-export const useJobListingContext = () => {
-  const jobListingContext = useContext(JobListingContext);
+export const useJobListing = () => {
+  const data = useContext(JobListingDataContext);
 
-  if (!jobListingContext) {
+  if (!data) {
+    throw new Error(' useJobListing has to be used within a JobListingProvider.');
+   
+  }
+
+  return data;
+};
+
+export const useJobListingDispatcher = () => {
+  const dispatcher = useContext(JobListingDispatcherContext);
+
+  if (!dispatcher) {
     throw new Error(
-      'jobListingContext has to be used withing <JobListingContext.Provider>'
+      'useJobListingDispatcher has to be used within JobListingDispatcherContext'
     );
   }
 
-  return jobListingContext;
+  return dispatcher;
 };
