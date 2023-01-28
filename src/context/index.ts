@@ -1,1 +1,9 @@
-export { useJobListingContext, JobListingContext } from './jobListingContext';
+export {
+  useJobListingContext,
+  JobListingContext,
+  JobListingProvider,
+  SearchFilterActions
+} from './jobListingContext';
+
+export type { SearchFilterAction } from './jobListingContext';
+
