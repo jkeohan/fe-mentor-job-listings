@@ -1,17 +1,19 @@
 import React from 'react';
 import removeButton from '../../assets/images/remove-icon.svg';
+import { useJobListingContext } from '../../context';
 
 interface Props {
-  filters: string[];
   clearFilter: () => void;
   removeFilter: (term: string) => void;
+  filters?: string[];  // set as optional to avoid typescript errors
 }
 
-export function SearchFilter({ filters, clearFilter, removeFilter }: Props) {
-  const activeFilters = filters.map((filter, index) => (
+export function SearchFilter({ filters = [], clearFilter, removeFilter }: Props) {
+  const {searchFilters} = useJobListingContext()
+  console.log(searchFilters, filters)
+  const activeFilters = searchFilters.map((filter, index) => (
     <div className="flex" key={filter}>
       <div
-        key={filter}
         className="flex-center tag-color leading-none py-2 pb-1 px-2 rounded-l-md font-bold"
       >
         {filter}

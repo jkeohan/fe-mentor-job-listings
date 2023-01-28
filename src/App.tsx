@@ -7,7 +7,7 @@ import { JobListings } from './components/JobListings';
 import jobDataArr from './data/data.json';
 import type { JobTransformed } from './types/JobListing';
 import { transformJobListing } from './utilities';
-
+import { JobListingContext } from './context';
 import useMediaQuery from './hooks/useMediaQuery';
 
 const jobData = transformJobListing(jobDataArr);
@@ -51,6 +51,12 @@ function App() {
   const activeJobListings =
     filteredJobListings.length > 0 ? filteredJobListings : jobData;
 
+  const contextData = {
+    jobData: activeJobListings,
+    searchFilters,
+    filteredJobListings
+  };
+
   return (
     <div className="App">
       <header>
@@ -68,29 +74,29 @@ function App() {
           />
         )}
       </header>
-      <div
-        className={
-          searchFilters.length > 0
-            ? '-mt-8 opacity-100'
-            : '-mt-8 opacity-0 pb-[4px]'
-        }
-      >
-        <SearchFilter
-          filters={searchFilters}
-          clearFilter={handleClearFilter}
-          removeFilter={handleRemoveFilter}
-        />
-      </div>
-      <section className="py-12 main-content md:pt-14 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
-        <section className="job-listings flex flex-col gap-10 md:gap-4">
-          <JobListings
-            jobsData={activeJobListings}
-            addFilter={handleAddFilter}
+      <JobListingContext.Provider  value={{ ...contextData }}>
+        <div
+          className={
+            searchFilters.length > 0
+              ? '-mt-8 opacity-100'
+              : '-mt-8 opacity-0 pb-[4px]'
+          }
+        >
+          <SearchFilter
+            // filters={searchFilters}
+            clearFilter={handleClearFilter}
             removeFilter={handleRemoveFilter}
-            filters={searchFilters}
           />
+        </div>
+        <section className="py-12 main-content md:pt-14 w-[327px] m-auto md:m-w-[90%] md:w-3/4">
+          <section className="job-listings flex flex-col gap-10 md:gap-4">
+            <JobListings
+              addFilter={handleAddFilter}
+              removeFilter={handleRemoveFilter}
+            />
+          </section>
         </section>
-      </section>
+      </JobListingContext.Provider>
     </div>
   );
 }
