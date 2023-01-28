@@ -41,5 +41,6 @@ So a quick google search led me to [turn off "Unkown at" elsint rule](https://fl
 - [Set VSCode as default merge editor](https://medium.com/geekculture/configure-visual-studio-code-as-a-default-git-editor-diff-tool-or-merge-tool-291fd7088cc9)
 - [Eslint Array Callback Return Rule](https://eslint.org/docs/latest/rules/array-callback-return)
 - [Add Pull Request Template](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository)
+- [Set git push to current branch](https://waylonwalker.com/git-push-default-current/)
 - [how-switch-node-js-versions-nvm](https://blog.logrocket.com/how-switch-node-js-versions-nvm/)
 - [classes-in-react-testing-library](https://www.webtips.dev/solutions/classes-in-react-testing-library)
