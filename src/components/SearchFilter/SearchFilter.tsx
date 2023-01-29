@@ -1,7 +1,7 @@
 import React from 'react';
 import removeButton from '../../assets/images/remove-icon.svg';
 import { useJobListingContext } from '../../context';
-import { SearchFilterActions as Action } from '../../context'
+import { SearchFilterActions as Action } from '../../types/JobListing'
 
 export function SearchFilter() {
   const {jobData: { searchFilters }, setJobData} = useJobListingContext()
