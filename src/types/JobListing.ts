@@ -19,3 +19,28 @@ export type JobTransformed = Omit<Job, 'new' | 'featured'> & {
   isFeatured: Boolean;
   tags: string[];
 };
+
+export type JobData = {
+  jobData: JobTransformed[];
+  searchFilters: string[];
+  filteredJobListings: JobTransformed[];
+};
+
+export enum SearchFilterActions {
+  AddFilter = 'ADD_FILTER',
+  RemoveFilter = 'REMOVE_FILTER',
+  ClearFilter = 'CLEAR_FILTER'
+}
+
+export type SearchFilterAction =
+  | {
+      type: 'ADD_FILTER';
+      value: string;
+    }
+  | {
+      type: 'REMOVE_FILTER';
+      value: string;
+    }
+  | {
+      type: 'CLEAR_FILTER';
+    };

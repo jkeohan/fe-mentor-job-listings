@@ -1,6 +1,6 @@
 import React from 'react';
 import { useJobListingContext } from '../../../../context';
-import {SearchFilterActions as Action } from '../../../../context';
+import {SearchFilterActions as Action } from '../../../../types/JobListing'
 
 interface Props {
   name: string;
