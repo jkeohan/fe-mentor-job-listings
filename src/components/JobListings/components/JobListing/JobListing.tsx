@@ -29,7 +29,7 @@ export function JobListing({ job, addFilter, removeFilter, filters }: Props) {
         alt="logo"
         className="-mt-[25px] md:mt-0 w-12 md:w-[80px] md:h-[80px]"
       />
-      <div>
+      <div className="min-w-[225px]">
         <div className="flex items-center gap-[10px] my-2">
           <div className="text-xs md:text-base pr-5 md:pr-2.5 text-desaturated-dark-cyan font-bold">
             {job.company}
