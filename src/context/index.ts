@@ -1,4 +1,5 @@
 export {
-  useJobListingContext,
+  useJobListing,
+  useJobListingDispatcher,
   JobListingProvider,
 } from './jobListingContext';
