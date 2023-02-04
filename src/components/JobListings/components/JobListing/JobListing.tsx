@@ -24,7 +24,7 @@ export function JobListing({ job, filters }: Props) {
         alt="logo"
         className="-mt-[25px] md:mt-0 w-12 md:w-[80px] md:h-[80px]"
       />
-      <div>
+      <div className="flex-[0_1_100%]">
         <div className="flex items-center gap-[10px] my-2">
           <div className="text-xs md:text-base pr-5 md:pr-2.5 text-desaturated-dark-cyan font-bold">
             {job.company}
@@ -51,8 +51,8 @@ export function JobListing({ job, filters }: Props) {
           <div>{job.location}</div>
         </div>
       </div>
-      <hr className="my-2" />
-      <div className="flex flex-wrap gap-[15px] grow bg-white pt-4 md:px-4 md:justify-end">
+      <hr className="my-2 md:hidden" />
+      <div className="flex flex-wrap gap-[15px] grow bg-white p-2 md:p-0 md:justify-end">
         {tagMarkup}
       </div>
     </article>
