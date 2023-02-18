@@ -4,8 +4,8 @@ import { useJobListing, useJobListingDispatcher } from '../../context';
 import { SearchFilterActions as Action } from '../../types/JobListing';
 
 export function SearchFilter() {
-  const {searchFilters} = useJobListing();
-  const dispatch = useJobListingDispatcher()
+  const { searchFilters } = useJobListing();
+  const dispatch = useJobListingDispatcher();
   const activeFilters = searchFilters.map((filter, index) => (
     <div className="flex" key={filter}>
       <div className="flex-center tag-color leading-none py-2 pb-1 px-2 rounded-l-md font-bold">
@@ -26,7 +26,7 @@ export function SearchFilter() {
     </div>
   ));
 
-  return (
+  return searchFilters.length > 0 ? (
     <div
       className={
         searchFilters.length > 0
@@ -36,13 +36,15 @@ export function SearchFilter() {
     >
       <div className="flex bg-white p-4 w-[327px] md:m-w-[90%] md:w-3/4 m-auto relative">
         <div className="flex-wrap flex gap-[15px] grow">{activeFilters}</div>
-        <div
-          onClick={() => dispatch({ type: Action.ClearFilter})}
+
+        <button
+          aria-label="clear the search filter"
+          onClick={() => dispatch({ type: Action.ClearFilter })}
           className="flex-center text-dark-grayish-cyan hover:text-desaturated-dark-cyan hover:cursor-pointer"
         >
           Clear
-        </div>
+        </button>
       </div>
     </div>
-  );
+  ) : null;
 }
