@@ -13,16 +13,16 @@ function App() {
     <div className="App">
       <header>
         {isBelowBreakpoint ? (
-          <img
+          <img      
             className="h-36 w-full bg-desaturated-dark-cyan"
             src={desktopHeaderSvg}
-            alt="desktop-header"
+            alt=""
           />
         ) : (
           <img
             className="w-full h-36 bg-desaturated-dark-cyan"
             src={mobileHeaderSvg}
-            alt="mobile-header"
+            alt=""
           />
         )}
       </header>
