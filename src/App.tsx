@@ -11,7 +11,7 @@ function App() {
   const isBelowBreakpoint = useMediaQuery(1023);
   return (
     <div className="App">
-      <header>
+      <header aria-hidden="true">
         {isBelowBreakpoint ? (
           <img
             className="h-36 w-full bg-desaturated-dark-cyan"
