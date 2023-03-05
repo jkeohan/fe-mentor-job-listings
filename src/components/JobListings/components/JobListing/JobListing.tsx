@@ -12,23 +12,29 @@ export function JobListing({ job, filters }: Props) {
     return <Tag key={tag} name={tag} />;
   });
 
-  const newAndFeaturedAriaLabelText = () => {
-    const {isNew, isFeatured} = job
-    if(isNew && isFeatured) {
-      return "This job has been recently posted and is featured"
+  const getNewAndFeaturedAriaLabelText = () => {
+    const { isNew, isFeatured } = job;
+    if (isNew && isFeatured) {
+      return 'This job has been recently posted and is featured';
     }
-    if(isNew) return "This job has been recently posted"
-    if(isFeatured) return 'This job is featured';
+    if (isNew) return 'This job has been recently posted';
+    if (isFeatured) return 'This job is featured';
 
-    return ""
-  }
+    return '';
+  };
+
+  const newAndFeaturedAriaLabelText = getNewAndFeaturedAriaLabelText()
 
   return (
     <article
+      aria-label="job listing"
       className="job-listing bg-white p-4 pt-0 md:pt-4 text-left rounded-md shadow-xl shadow-desaturated-dark-cyan/30 md:flex md:items-center md:justify-center md:gap-5"
       key={job.id}
     >
-      <h1 aria-label={`${job.position} for ${job.company}`}></h1>
+      <h1
+        aria-label={`${job.position} for ${job.company}`}
+        className="none"
+      >{`${job.position} for ${job.company}`}</h1>
       <img
         aria-hidden="true"
         src={`../assets/images/${job.logo}`}
@@ -37,7 +43,7 @@ export function JobListing({ job, filters }: Props) {
       />
       <div className="flex-[0_1_100%]">
         <div
-          aria-label={newAndFeaturedAriaLabelText()}
+          aria-label={newAndFeaturedAriaLabelText}
           className="flex items-center gap-[10px] my-2"
         >
           <div
