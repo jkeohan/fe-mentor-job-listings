@@ -16,6 +16,7 @@ export function Tag({ name }: Props) {
   
   return (
     <button
+      aria-label={`${name} filter tag`}
       className={`flex-center tag-color leading-none py-2 pb-1 px-3 rounded-t-md rounded-b-md font-bold  hover:bg-desaturated-dark-cyan hover:text-white hover:cursor-pointer
       ${isActive ? 'active-tag-color' : 'tag-color'}`}
       onClick={() => dispatch({type: Action.ToggleFilter, value: name})}
