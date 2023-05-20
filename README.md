@@ -39,6 +39,12 @@ Your users should be able to:
 ### Screenshot
 ![Design preview for the Job listings with filtering coding challenge](./static-job-listings-master/design/desktop-preview.jpg)
 
+#### Figma Designs
+
+The official Figma Designs
+![Figma Designs](https://i.imgur.com/OsitdNT.png)
+
+
 ## My process
 TBD
 
