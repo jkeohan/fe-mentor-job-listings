@@ -8,6 +8,8 @@ interface Props {
 }
 
 export function JobListing({ job, filters }: Props) {
+  console.log('job', job.tags)
+
   const tagMarkup = job.tags.map((tag) => {
     return <Tag key={tag} name={tag} />;
   });
@@ -42,7 +44,7 @@ export function JobListing({ job, filters }: Props) {
         alt="logo"
         className="-mt-[25px] md:mt-0 w-12 md:w-[80px] md:h-[80px]"
       />
-      <div className="flex-[0_1_100%]">
+      <div>
         <div
           aria-label={newAndFeaturedAriaLabelText}
           className="flex items-center gap-[10px] my-2"
