@@ -30,9 +30,10 @@ So a quick google search led me to [turn off "Unkown at" elsint rule](https://fl
 
 - [SVG Previewer](https://marketplace.visualstudio.com/items?itemName=vitaliymaz.vscode-svg-previewer)
 - [How to Configure a React App with TypeScript, TailwindCSS, Yarn and Storybook](https://blog.bitsrc.io/how-to-configure-a-react-app-with-typescript-tailwindcss-yarn-and-storybook-a271df5d9884)
-- [How to use tailwind with React](https://medium.com/codingthesmartway-com-blog/how-to-use-tailwind-css-with-react-9dd78bbdc0e0)
+- [How to use tailwind with React](https://storybook.js.org/recipes/sass)
 - [Tailwind docs](<https://tailwindcss.com/docs/text-align#setting-the-text-alignment>)
 - [How to use Prettier with ESLint and TypeScript in VSCode](https://khalilstemmler.com/blogs/tooling/prettier/)
+- [Setup Storybook to use Tailwind](https://stackoverflow.com/questions/65495912/storybook-tailwind-how-should-i-add-tailwind-to-storybook)
 - [Configure Prettier for format on save](https://www.youtube.com/watch?v=zd_aDbwr4pY)
 - [Adding CSS Reset to CRA](https://create-react-app.dev/docs/adding-css-reset)
 - [Adding TypeScript to CRA](https://create-react-app.dev/docs/adding-typescript/)
